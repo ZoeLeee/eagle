@@ -125,7 +125,7 @@
                             'Content-Type': 'multipart/form-data'
                         }
                     };
-                    this.$http.post("/login", bodyFormData, config).then((response) => {
+                    this.$http.post("/v1/login", bodyFormData, config).then((response) => {
                         console.log(response);
                         if (response.data.code === 0) {
                             $("#inputEmail").removeClass("is-danger");

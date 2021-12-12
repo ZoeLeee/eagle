@@ -44,14 +44,9 @@ func newUsers(svc *service) *userService {
 
 // Register 注册用户
 func (s *userService) Register(ctx context.Context, username, email, password string) error {
-	pwd, err := auth.HashAndSalt(password)
-	if err != nil {
-		return errors.Wrapf(err, "encrypt password err")
-	}
-
 	u := model.UserBaseModel{
 		Username:  username,
-		Password:  pwd,
+		Password:  password,
 		Email:     email,
 		CreatedAt: time.Time{},
 		UpdatedAt: time.Time{},
