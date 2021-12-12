@@ -18,7 +18,7 @@ func Init() *gorm.DB {
 	if err != nil {
 		panic(fmt.Sprintf("load orm conf err: %v", err))
 	}
-
+	
 	DB = orm.NewMySQL(cfg)
 	return DB
 }

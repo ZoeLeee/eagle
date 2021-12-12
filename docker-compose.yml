@@ -59,7 +59,7 @@ services:
       - mysql_data:/var/lib/mysql
       - ./deploy/docker/mysql/my.cnf:/etc/mysql/my.cnf
       - ./deploy/docker/mysql/my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
-      - ./deploy/docker/mysql/:/docker-entrypoint-initdb.d/
+      - ./deploy/docker/mysql:/docker-entrypoint-initdb.d
     networks:
       - eagle
 
