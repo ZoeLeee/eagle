@@ -24,7 +24,7 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/Register": {
+        "/register": {
             "post": {
                 "description": "用户注册",
                 "produces": [

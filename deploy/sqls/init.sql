@@ -55,75 +55,62 @@ DROP TABLE IF EXISTS `user_info`;
 
 CREATE TABLE `user_info` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-    `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
+    `user_id` int(10) unsigned NOT NULL COMMENT '用户id',
     `username` varchar(255) NOT NULL DEFAULT '',
     `avatar` varchar(255) NOT NULL DEFAULT '' COMMENT '头像',
-    `phone` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '手机号',
-    `email` varchar(255) NOT NULL DEFAULT '' COMMENT '邮箱',
     `sex` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '性别 0:未知 1:男 2:女',
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
     PRIMARY KEY (`id`),
-    UNIQUE KEY `uniq_uid` (`user_id`),
-    UNIQUE KEY `uniq_phone` (`phone`)
+    UNIQUE KEY `uniq_uid` (`user_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '用户信息表';
 
 -- LOCK TABLES `user_info` WRITE;
 /*!40000 ALTER TABLE `user_info` DISABLE KEYS */
 ;
 
--- INSERT INTO
---     `user_info` (
---         `id`,
---         `user_id`,
---         'username',
---         `avatar`,
---         'phone',
---         `email`,
---         `sex`,
---         `created_at`,
---         `updated_at`
---     )
--- VALUES
---     (
---         1,
---         1,
---         'Joe',
---         '/uploads/avatar.jpg',
---         13010102020,
---         '123@cc.com',
---         1,
---         '2020-05-23 00:12:30',
---         '2020-05-29 12:50:54'
---     ),
---     (
---         2,
---         2,
---         `Zoe`,
---         '/uploads/avatar.jpg',
---         13010102021,
---         '1234@cc.com',
---         1,
---         '2020-05-23 00:12:30',
---         '2020-05-23 00:20:09'
---     );
--- /*!40000 ALTER TABLE `user_stat` ENABLE KEYS */
--- ;
+INSERT INTO
+    `user_info` (
+        `id`,
+        `user_id`,
+        `username`,
+        `avatar`,
+        `sex`,
+        `created_at`,
+        `updated_at`
+    )
+VALUES
+    (
+        1,
+        1,
+        'Joe',
+        '/uploads/avatar.jpg',
+        1,
+        '2020-05-23 00:12:30',
+        '2020-05-29 12:50:54'
+    );
+
+/*!40000 ALTER TABLE `user_info` ENABLE KEYS */
+;
+
 -- UNLOCK TABLES;
 # Dump of table user_login 
 # ------------------------------------------------------------
 DROP TABLE IF EXISTS `user_login`;
 
 CREATE TABLE `user_login` (
-    `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
     `login_name` varchar(255) NOT NULL DEFAULT '' COMMENT '登录名',
     `password` varchar(60) NOT NULL DEFAULT '',
+    `phone` bigint(20) unsigned NOT NULL COMMENT '手机号',
+    `email` varchar(255) NOT NULL DEFAULT '' COMMENT '邮箱',
     `status` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '状态 0:删除 1:正常',
     `deleted_at` timestamp NULL DEFAULT NULL,
     `created_at` timestamp NULL DEFAULT NULL,
     `updated_at` timestamp NULL DEFAULT NULL,
-    PRIMARY KEY (`user_id`),
-    UNIQUE KEY `uniq_login_name` (`login_name`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uniq_login_name` (`login_name`),
+    UNIQUE KEY `uniq_phone` (`phone`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '用户登录表';
 
 -- LOCK TABLES `user_login` WRITE;
@@ -132,9 +119,11 @@ CREATE TABLE `user_login` (
 
 INSERT INTO
     `user_login` (
-        `user_id`,
+        `id`,
         `login_name`,
         `password`,
+        `phone`,
+        `email`,
         `status`,
         `deleted_at`,
         `created_at`,
@@ -145,6 +134,8 @@ VALUES
         1,
         'test-name',
         '$2a$10$WhJY.MCtsp5kmnyl/UAdQuWbbMzxvmLCPeDhcpxyL84lYey829/ym',
+        13010102020,
+        '123@cc.com',
         1,
         NULL,
         '2020-02-09 10:23:33',
@@ -154,6 +145,8 @@ VALUES
         2,
         'admin',
         '$2a$10$WhJY.MCtsp5kmnyl/UAdQuWbbMzxvmLCPeDhcpxyL84lYey829/ym',
+        13010102021,
+        '124@cc.com',
         1,
         NULL,
         '2020-05-20 22:42:18',

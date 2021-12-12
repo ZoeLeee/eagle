@@ -14,7 +14,6 @@ import (
 	pb "github.com/go-eagle/eagle/api/grpc/user/v1"
 	"github.com/go-eagle/eagle/internal/model"
 	"github.com/go-eagle/eagle/pkg/app"
-	"github.com/go-eagle/eagle/pkg/auth"
 	"github.com/go-eagle/eagle/pkg/log"
 )
 
@@ -73,7 +72,7 @@ func (s *userService) EmailLogin(ctx context.Context, email, password string) (t
 	}
 
 	// ComparePasswords the login password with the user password.
-	if !auth.ComparePasswords(u.Password, password) {
+	if u.Password != password {
 		return "", errors.New("invalid password")
 	}
 

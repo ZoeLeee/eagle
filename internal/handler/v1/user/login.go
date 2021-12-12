@@ -32,6 +32,7 @@ func Login(c *gin.Context) {
 	log.Infof("login req %#v", req)
 
 	t, err := service.Svc.Users().EmailLogin(c, req.Email, req.Password)
+
 	if err != nil {
 		log.Warnf("email login err: %v", err)
 		response.Error(c, ecode.ErrEmailOrPassword)

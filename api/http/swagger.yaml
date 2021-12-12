@@ -99,7 +99,7 @@ info:
   title: eagle docs api
   version: "1.0"
 paths:
-  /Register:
+  /register:
     post:
       description: 用户注册
       parameters:

@@ -9,7 +9,7 @@
     "host": "localhost:8080",
     "basePath": "/v1",
     "paths": {
-        "/Register": {
+        "/register": {
             "post": {
                 "description": "用户注册",
                 "produces": [
